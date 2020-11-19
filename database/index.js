@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://db:27017/bookable');
+const databaseHostname =
+  process.env.NODE_ENV === 'production' ? 'db' : 'localhost';
+
+mongoose.connect(`mongodb://${databaseHostname}:27017/bookable`);
 
 const reviewSchema = mongoose.Schema({
   username: String,

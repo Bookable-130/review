@@ -8,10 +8,12 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build:prod": "webpack",
-    "start:prod": "node server/index.js",
-    "build:dev": "webpack -d --watch",
-    "start:dev": "nodemon server/index.js",
+    "client:prod": "webpack",
+    "server:prod": "NODE_ENV=production node server/index.js",
+    "run:prod": "run-p client:prod server:prod",
+    "client:dev": "webpack -d --watch",
+    "server:dev": "NODE_ENV=development nodemon server/index.js",
+    "run:dev": "run-p client:dev server:dev",
     "seed": "node database/seed.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -49,6 +51,7 @@
     "eslint-plugin-react": "^7.21.1",
     "jest": "^26.4.2",
     "jest-styled-components": "^7.0.3",
+    "npm-run-all": "^4.1.5",
     "sinon": "^9.1.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"

@@ -2,9 +2,7 @@ const Review = require('./index');
 const faker = require('faker');
 const moment = require('moment');
 
-
 const createData = function (num) {
-
   // Generate Dates
   const monthYear = [];
   let now = moment();
@@ -15,7 +13,7 @@ const createData = function (num) {
 
     monthYear.push({
       dateNum,
-      dateStr
+      dateStr,
     });
   }
 
@@ -23,12 +21,20 @@ const createData = function (num) {
   const sexes = ['female', 'male'];
 
   // Generate Reviews
-  const reviews = [faker.lorem.words(), faker.lorem.sentence(), faker.lorem.sentences(), faker.lorem.paragraph(), faker.lorem.paragraphs()];
+  const reviews = [
+    faker.lorem.words(),
+    faker.lorem.sentence(),
+    faker.lorem.sentences(),
+    faker.lorem.paragraph(),
+    faker.lorem.paragraphs(),
+  ];
 
   for (let i = 0; i < num; i++) {
     let sex = sexes[Math.floor(Math.random() * 2)];
     const username = faker.name.firstName(sex);
-    const image = `https://bookable-hrsf130-photos.s3.us-east-2.amazonaws.com/${sex}-${Math.floor(Math.random() * 50) + 1}.jpg`;
+    const image = `https://bookable-hrsf130-photos.s3.us-east-2.amazonaws.com/${sex}-${
+      Math.floor(Math.random() * 50) + 1
+    }.jpg`;
     const data = {
       username: username,
       image: image,
@@ -41,9 +47,16 @@ const createData = function (num) {
       checkInRating: Math.floor(Math.random() * 2) + 4,
       accuracyRating: Math.floor(Math.random() * 2) + 4,
       locationRating: Math.floor(Math.random() * 2) + 4,
-      valueRating: Math.floor(Math.random() * 2) + 4
+      valueRating: Math.floor(Math.random() * 2) + 4,
     };
-    data.totalRating = (data.cleanlinessRating + data.communicationRating + data.checkInRating + data.accuracyRating + data.locationRating + data.valueRating) / 6;
+    data.totalRating =
+      (data.cleanlinessRating +
+        data.communicationRating +
+        data.checkInRating +
+        data.accuracyRating +
+        data.locationRating +
+        data.valueRating) /
+      6;
     const review = new Review(data);
     review.save((err, result) => {
       if (err) {
@@ -56,6 +69,3 @@ const createData = function (num) {
 };
 
 createData(50);
-
-
-
