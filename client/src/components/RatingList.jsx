@@ -96,7 +96,7 @@ const RatingList = (props) => {
           {[0, 1, 2].map((index) => {
             const category = categories[index];
             return (
-              <Row isModal={isModal}>
+              <Row key={index} isModal={isModal}>
                 <Category isModal={isModal}> {category.label} </Category>
                 <Rating>
                   <ProgressBar
@@ -117,7 +117,7 @@ const RatingList = (props) => {
           {[3, 4, 5].map((index) => {
             const category = categories[index];
             return (
-              <Row isModal={isModal}>
+              <Row key={index} isModal={isModal}>
                 <Category isModal={isModal}> {category.label} </Category>
                 <Rating>
                   <ProgressBar

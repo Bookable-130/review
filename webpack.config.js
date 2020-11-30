@@ -28,10 +28,6 @@ module.exports = {
           from: `${SRC_DIR}/index.html`,
           to: `${DIST_DIR}/index.html`,
         },
-        {
-          from: `${SRC_DIR}/images/pink-star.png`,
-          to: `${DIST_DIR}/images/pink-star.png`,
-        },
       ],
     }),
   ],
