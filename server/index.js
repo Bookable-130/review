@@ -5,9 +5,10 @@ const Review = require('../database/index');
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-const port = 3003;
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+const SERVER_PORT = 3003;
+
+app.listen(SERVER_PORT, () => {
+  console.log(`Listening at http://localhost:${SERVER_PORT}`);
 });
 
 app.get('/rooms/*', function (req, res) {
